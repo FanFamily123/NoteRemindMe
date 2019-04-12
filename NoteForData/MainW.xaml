@@ -12,7 +12,10 @@
             <ColumnDefinition Width="667*"/>
             <ColumnDefinition Width="81*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="刷新" Click="Referesh_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="25,80,0,0" Grid.Column="1"/>
+        <Button Content="刷新" Click="Referesh_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="260,12,0,0" Grid.Column="1" Height="44"/>
+        <Button Content="新增" Click="Referesh_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="22,12,0,0" Grid.Column="1" Height="44"/>
+        <Button Content="退出本账号" Click="Referesh_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="568,11,0,0" Grid.Column="1" Height="43" Grid.ColumnSpan="2"/>
+        <Grid Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="325" VerticalAlignment="Top" Width="763" Margin="18,80,0,0"/>
 
     </Grid>
 </Window>
