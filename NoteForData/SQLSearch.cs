@@ -22,5 +22,35 @@ namespace NoteForData
             return null;
         }
 
+       //插入
+        public bool InsertNote(Note note) {
+            string exMsg;
+            string strsql = "insert into notedetail(thingname,time,usern) values (' "+ note.thingName+"','"+note.dtime+"','"+note.userName+"')";
+           int resualt=SqlHelp.ExecuteNonQuery(strconn,strsql,out exMsg);
+           if (resualt==1)
+           {
+               return true;
+           }
+           else
+           {
+               return false;
+           }
+        }
+
+
+        //通过账户来查找所有文件
+        public System.Data.DataTable srarchNoteList(string username) {
+            string expMsg;
+            string strsql = "select * from notedetail where usern =' "+username+"'";
+            System.Data.DataTable dt = SqlHelp.ExcuteReader(strconn, strsql, out expMsg);
+            if (dt != null && expMsg.Trim().Equals(""))
+            {
+                return dt;
+            }
+            return null;
+        
+        }
+
+
     }
 }

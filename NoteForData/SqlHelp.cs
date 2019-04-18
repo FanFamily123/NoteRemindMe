@@ -37,6 +37,34 @@ namespace NoteForData
             return 0;
         }
 
+        //事务操作
+        public static int ExecuteNonQuery(string ConnString,string CmdText,out string ExceptionMsg) {
+           int resualt = 0;
+           string outerror = "";
+           try
+           {
+               using (MySqlConnection conn = new MySqlConnection(ConnString)) { //需要添加Mysql.data.dll
+                   conn.Open();
+                   MySqlCommand cmd = new MySqlCommand();
+                   cmd.Connection = conn;
+                   string strsql = CmdText;
+                   if (strsql.Trim().Length>1)
+                   {
+                       cmd.CommandText = strsql;
+                       resualt = cmd.ExecuteNonQuery();
+                   }
+               }
+           }
+           catch (System.Exception ex)
+           {
+
+               outerror = ex.ToString();
+           }
+           ExceptionMsg = outerror;
+           return resualt;
+       }
+   
+
 
 
         //查询

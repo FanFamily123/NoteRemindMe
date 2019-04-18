@@ -56,8 +56,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddNote.xaml.cs">
+      <DependentUpon>AddNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Note.cs" />
     <Compile Include="SqlHelp.cs" />
     <Compile Include="SQLSearch.cs" />
+    <Page Include="AddNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainW.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

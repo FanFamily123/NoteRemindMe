@@ -42,7 +42,7 @@ namespace NoteForData
 
             if (pw.Equals(uPwd))
             {
-                MainW mw = new MainW();
+                MainW mw = new MainW(uName);
                 mw.ShowDialog();
                 this.Close();
             }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoteForData"
         mc:Ignorable="d"
-        Title="MainW" Height="450" Width="800">
+        Title="MainW" Height="450" Width="800"  Loaded="Window_Loaded_1">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="44*"/>
@@ -13,9 +13,16 @@
             <ColumnDefinition Width="81*"/>
         </Grid.ColumnDefinitions>
         <Button Content="刷新" Click="Referesh_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="260,12,0,0" Grid.Column="1" Height="44"/>
-        <Button Content="新增" Click="Referesh_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="22,12,0,0" Grid.Column="1" Height="44"/>
-        <Button Content="退出本账号" Click="Referesh_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="568,11,0,0" Grid.Column="1" Height="43" Grid.ColumnSpan="2"/>
-        <Grid Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="325" VerticalAlignment="Top" Width="763" Margin="18,80,0,0"/>
+        <Button Content="新增" Click="add_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="22,12,0,0" Grid.Column="1" Height="44"/>
+        <Button Content="退出本账号" Click="exit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="568,11,0,0" Grid.Column="1" Height="43" Grid.ColumnSpan="2"/>
+        <DataGrid Name="dg1" Loaded="dg1_Loaded_1" Grid.Column="1" HorizontalAlignment="Left" Margin="22,91,0,0" VerticalAlignment="Top" Height="318" Width="635" AutoGenerateColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="事件" Binding="{Binding Path=thingname}" Width="3*"  />
+                <DataGridTextColumn Header="添加时间" Binding="{Binding Path=time}" Width="3*"/>
+                <DataGridTextColumn Header="是否完成" Binding="{Binding Path=thingname}" Width="3*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
 
     </Grid>
 </Window>
