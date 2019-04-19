@@ -31,7 +31,9 @@ namespace NoteForData
         //刷新
         private void Referesh_Click(object sender, RoutedEventArgs e)
         {
-           
+            System.Data.DataTable dtable = sh.srarchNoteList(user);
+            dg1.ItemsSource = dtable.AsDataView();
+            dg1.SelectedValuePath = "id";
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)
@@ -43,6 +45,7 @@ namespace NoteForData
         {
             AddNote addNote = new AddNote(user);
             addNote.Show();
+            addNote.rea += Refesh;
         }
 
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
@@ -58,15 +61,45 @@ namespace NoteForData
 
         private void dg1_Loaded_1(object sender, RoutedEventArgs e)
         {
-
-         //   dg1.ItemsSource = sh.srarchNoteList(user).DefaultView;
             System.Data.DataTable dtable = sh.srarchNoteList(user);
-            dtable.Columns.Add(new DataColumn("id", typeof(int)));
-
+            dg1.ItemsSource = dtable.AsDataView();
+            dg1.SelectedValuePath = "id";
         }
 
+        //第一个按钮点击事件  
+        private void BtnAction_Click(object sender, RoutedEventArgs e)
+        {
+            //修改这个记录的flag
+          
+            string a = dg1.SelectedValue.ToString();  //获取id值
+            int thingid = Convert.ToInt32(a);
+            bool x = sh.UpdateDone(thingid);
+            if (x == true)
+            {
+                MessageBox.Show("完成目标+1");
+            }
+            Refesh();
 
+        }
+        //第二个按钮点击事件 
+        private void BtnAction1_Click(object sender, RoutedEventArgs e)
+        {
+            string a = dg1.SelectedValue.ToString();  //获取id值
+            int thingid = Convert.ToInt32(a);
+           bool x =sh.UpdateDone(thingid);
+            if (x==true)
+            {
+                MessageBox.Show("删除完成");
+            }
+            Refesh();
+        }
 
+        private void Refesh() {
+            System.Data.DataTable dtable = sh.srarchNoteList(user);
+            dg1.ItemsSource = dtable.AsDataView();
+            dg1.SelectedValuePath = "id";
 
+        }
+      
     }
 }

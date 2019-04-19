@@ -13,7 +13,7 @@ namespace NoteForData
         //登陆
         public System.Data.DataTable loginTrue(string username) {
             string expMsg;
-            string strsql = "select pwd from userinfo where name='"+username+"'";
+            string strsql = "select pwd from logindata where name='"+username+"'";
             System.Data.DataTable dt = SqlHelp.ExcuteReader(strconn,strsql,out expMsg);
             if (dt != null &&expMsg.Trim().Equals(""))
             {
@@ -25,7 +25,7 @@ namespace NoteForData
        //插入
         public bool InsertNote(Note note) {
             string exMsg;
-            string strsql = "insert into notedetail(thingname,time,usern) values (' "+ note.thingName+"','"+note.dtime+"','"+note.userName+"')";
+            string strsql = "insert into notedata(thingname,thingtime,usern) values (' "+ note.thingName+"','"+note.dtime+"','"+note.userName+"')";
            int resualt=SqlHelp.ExecuteNonQuery(strconn,strsql,out exMsg);
            if (resualt==1)
            {
@@ -38,10 +38,10 @@ namespace NoteForData
         }
 
 
-        //通过账户来查找所有文件
+        //通过账户来查找所有未完成文件
         public System.Data.DataTable srarchNoteList(string username) {
             string expMsg;
-            string strsql = "select * from notedetail where usern =' "+username+"'";
+            string strsql = "select * from notedata where usern ='"+username+"' and deleteflag=0 and doneflag=0";
             System.Data.DataTable dt = SqlHelp.ExcuteReader(strconn, strsql, out expMsg);
             if (dt != null && expMsg.Trim().Equals(""))
             {
@@ -51,6 +51,20 @@ namespace NoteForData
         
         }
 
+        //修改flag的值
+        public bool UpdateDone(int thingid) {
+            string expMsg;
+            string strsql = "update notedata set deleteflag =1 ,doneflag=1 where id=" + thingid;
+            int resualt = SqlHelp.ExecuteNonQuery(strconn, strsql, out expMsg);
+            if (resualt == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

@@ -26,6 +26,10 @@ namespace NoteForData
             InitializeComponent();
             note.userName = user;
         }
+        //通过委托 插入成功则调用主界面刷新函数
+
+        public delegate void ReafeshM();
+        public event ReafeshM rea;
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -40,6 +44,7 @@ namespace NoteForData
                     if (re)
                     {
                         MessageBox.Show("插入成功");
+                        rea();
                         this.Close();
                     }
                     else

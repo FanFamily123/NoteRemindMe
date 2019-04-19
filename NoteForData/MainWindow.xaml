@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoteForData"
         mc:Ignorable="d" 
-        Title="MainWindow" Height="310" Width="408" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="310" Width="408" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterScreen" WindowState="Normal" ResizeMode="NoResize" >
     <Grid Margin="0,0,0,-4" HorizontalAlignment="Left" Width="417" >
         <Button Content="登陆" Name="login"  Click="Login_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Margin="100,210,0,0"/>
         <Button Content="取消" Name="cancle" Click="Cancle_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Margin="271,209,0,0"/>

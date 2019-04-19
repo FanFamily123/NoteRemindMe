@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>captain.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -114,6 +117,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="source\timg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="captain.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,24 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NoteForData"
         mc:Ignorable="d"
-        Title="MainW" Height="450" Width="800"  Loaded="Window_Loaded_1">
-    <Grid>
+        Title="待办事件" Height="450" Width="800"  Loaded="Window_Loaded_1" WindowStartupLocation="CenterScreen"  >
+    <Grid Margin="0,0,-3,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="44*"/>
-            <ColumnDefinition Width="667*"/>
-            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="424*"/>
+            <ColumnDefinition Width="235*"/>
+            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="刷新" Click="Referesh_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="260,12,0,0" Grid.Column="1" Height="44"/>
-        <Button Content="新增" Click="add_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="22,12,0,0" Grid.Column="1" Height="44"/>
-        <Button Content="退出本账号" Click="exit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="568,11,0,0" Grid.Column="1" Height="43" Grid.ColumnSpan="2"/>
-        <DataGrid Name="dg1" Loaded="dg1_Loaded_1" Grid.Column="1" HorizontalAlignment="Left" Margin="22,91,0,0" VerticalAlignment="Top" Height="318" Width="635" AutoGenerateColumns="True">
+        <Button Content="刷新" Click="Referesh_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="145,15,0,0" Grid.Column="3" Height="44"/>
+        <Button Content="新增" Click="add_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="15,15,0,0" Grid.Column="3" Height="44"/>
+        <Button Content="退出本账号" Click="exit_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="268,15,0,0" Grid.Column="3" Height="43"/>
+        <DataGrid Name="dg1" Loaded="dg1_Loaded_1" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="2,67,-1,0" VerticalAlignment="Top" Height="342" Width="794" AutoGenerateColumns="False" Grid.ColumnSpan="7" CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="事件" Binding="{Binding Path=thingname}" Width="3*"  />
-                <DataGridTextColumn Header="添加时间" Binding="{Binding Path=time}" Width="3*"/>
-                <DataGridTextColumn Header="是否完成" Binding="{Binding Path=thingname}" Width="3*"/>
+                <DataGridTextColumn x:Name="thingname" Header="事件" Binding="{Binding Path=thingname}" Width="5*" IsReadOnly="True" />
+                <DataGridTextColumn x:Name="time" Header="添加时间" Binding="{Binding Path=thingtime, StringFormat='yyyy-MM-dd'}" Width="1*" IsReadOnly="True"/>
+                <!--<DataGridTextColumn x:Name="tflag" Header="是否完成" Binding="{Binding Path=doneflag}" Width="3*" IsReadOnly="True"/>-->
+                <DataGridTemplateColumn x:Name="UserAction" Header="操作" Width="4*" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="BtnAction" Content="完成" Height="25"
+                                    Width="80" Click="BtnAction_Click" IsEnabled="{Binding Path=id}"
+                                    FontSize="20"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  >
+                                </Button>
+                                <Button x:Name="BtnAction1" Content="删除" Height="25"
+                                    Width="80" Click="BtnAction1_Click" IsEnabled="{Binding Path=id}"
+                                    FontSize="20"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-
-
     </Grid>
 </Window>
